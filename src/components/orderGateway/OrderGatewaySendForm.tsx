@@ -48,22 +48,6 @@ const OrderGatewaySendForm: React.FC = () => {
     <form onSubmit={onSubmit} className={s.sendForm}>
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
-          <TextField
-            fullWidth
-            size='small'
-            label='Phone Number'
-            variant='outlined'
-            type="number"
-            name='phone'
-          />
-          <TextField
-            fullWidth
-            size='small'
-            label='email'
-            variant='outlined'
-            type="email"
-            name='email'
-          />
           {
             typeSend === "sms" ? (
               <FormTextField<TFormValues>
