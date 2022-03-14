@@ -46,7 +46,7 @@ const OrderGatewaySendForm: React.FC = () => {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <form onSubmit={onSubmit} className={s.sendTypeForm}>
+    <form onSubmit={onSubmit} className={s.sendForm}>
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
           <FormTextField
@@ -66,7 +66,7 @@ const OrderGatewaySendForm: React.FC = () => {
               },
             }}
             InputProps={{
-              startAdornment: <InputAdornment position="start"><Typography sx={{ fontSize: 22 }}> +7</Typography></InputAdornment>,
+              startAdornment: <InputAdornment position="start"><Typography className={s.sendForm_adornment}> +7</Typography></InputAdornment>,
             }}
             error={errors?.value}
             helperText={errors?.value}

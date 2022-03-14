@@ -16,19 +16,20 @@ export const UITransparentTextField = styled(TextField)({
     backgroundColor: colors.primaryGray50,
   },
   ".MuiFilledInput-root:before": {
-    borderBottom: `2px solid ${colors.primaryGray900}`,
+    borderBottom: `2px solid ${colors.primaryGray800}`,
   },
   ".MuiFilledInput-root:after": {
-    borderBottom: `2px solid ${colors.primaryBlue400}`,
+    borderBottom: `2px solid ${colors.primaryGray800}`,
     backgroundColor: "transparent",
   },
   ".MuiFilledInput-root": { borderBottom: "0" },
   "& label.Mui-focused": {
-    color: `${colors.primaryGray900}`,
+    color: `${colors.primaryGray800}`,
   },
   "& label.MuiInputLabel-root": {
-    color: `${colors.primaryGray900}`,
-    fontSize: 20
+    color: `${colors.primaryGray800}`,
+    fontSize: 20,
+    fontFamily: "SourceSansPro-SemiBold, sant-serif"
   },
 });
 
@@ -57,7 +58,7 @@ const FormTextField: React.FC<TFormTextField> = ({ name, control, label, rules, 
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <UITransparentTextField
           {...props}
-          InputProps={{ ...props.InputProps }}
+          InputProps={{ inputComponent: CustomMaskField, ...props.InputProps }}
           helperText={error ? error : null}
           error={!!error}
           onChange={onChange}
