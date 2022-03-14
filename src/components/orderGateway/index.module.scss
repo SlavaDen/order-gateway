@@ -5,7 +5,7 @@
 }
 .sendCheck_title{
   text-align: center !important;
-  font-family: var(#{--primary-font-bold});
+  font-family: var(#{--primary-font-medium});
 }
 
 .sendType_container{
@@ -20,13 +20,13 @@
 }
 .sendTypeItem_label{
   text-align: center !important;
-  font-family: var(#{--primary-font-semiBold}) !important;
+  font-family: var(#{--primary-font-medium}) !important;
 }
 
 .sendForm{
   padding: 0 1.2rem 0 1.2rem !important;
 }
 .sendForm_adornment{
-  font-size: 1.2rem !important;
+  font-size: 1.3rem !important;
   color: var(#{--primary-gray-500}) !important;
 }

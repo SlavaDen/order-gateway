@@ -1,32 +1,17 @@
 import {
-  Card,
-  Typography,
-  Grid,
-  InputAdornment,
+  Grid, InputAdornment, Typography,
 } from "@mui/material";
 import s from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTypeSend } from "store/orderSender/orderSender-selectors";
-import { setTypeSend } from "store/orderSender/orderSender-reducer";
 import { Button, FormTextField } from "components/common";
-import { useForm, Resolver } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { emailPattern } from "utils/form/patterns";
+import { MaskField } from "react-mask-field";
 
 type TFormValues = {
   value: string;
-};
-
-const resolver: Resolver<TFormValues> = async (values) => {
-  return {
-    values: !values.value ? {} : values,
-    errors: !values.value
-      ? {
-        value: {
-          type: "required",
-          message: "This is required."
-        }
-      }
-      : {}
-  };
 };
 
 const OrderGatewaySendForm: React.FC = () => {
@@ -38,41 +23,61 @@ const OrderGatewaySendForm: React.FC = () => {
     value: ""
   };
 
-  const { control, formState: errors, handleSubmit } = useForm<TFormValues>({
-    resolver: resolver,
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TFormValues>({
     defaultValues: defaultValues
   });
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
+  function MobileMaskField({ ...otherProps }) {
+    return <MaskField mask="(___)-___-__-__" replacement="_" {...otherProps} />;
+  }
+
+  useEffect(() => {
+    reset()
+  }, [typeSend]);
+
   return (
     <form onSubmit={onSubmit} className={s.sendForm}>
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
-          <FormTextField
-            name="value"
-            control={control}
-            label="Номер телефона"
-            fullWidth
-            rules={{
-              required: true,
-              minLength: {
-                value: 13,
-                message: "Введите номер",
-              },
-              maxLength: {
-                value: 13,
-                message: "Введите номер",
-              },
-            }}
-            InputProps={{
-              startAdornment: <InputAdornment position="start"><Typography className={s.sendForm_adornment}> +7</Typography></InputAdornment>,
-            }}
-            error={errors?.value}
-            helperText={errors?.value}
-            variant="filled"
-            mask="___-___-__-__"
-          />
+          {
+            typeSend === "sms" ? (
+              <FormTextField<TFormValues>
+                name="value"
+                label="Номер телефона"
+                register={register}
+                variant="filled"
+                rules={{
+                  required: "Введите номер телефона", minLength: {
+                    value: 15,
+                    message: "Введите номер телефона",
+                  },
+                }}
+                helperText={errors?.value?.message}
+                fullWidth
+                InputProps={{
+                  startAdornment: <InputAdornment position="start"><Typography className={s.sendForm_adornment}> +7</Typography></InputAdornment>,
+                  inputComponent: MobileMaskField,
+                }}
+              />
+            ) : (
+              <FormTextField<TFormValues>
+                name="value"
+                label="Email"
+                register={register}
+                variant="filled"
+                rules={{ required: "Введите email", pattern: emailPattern, }}
+                helperText={errors?.value?.message}
+                fullWidth
+              />
+            )
+          }
         </Grid>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
           <Button fullWidth type="submit" size="large">

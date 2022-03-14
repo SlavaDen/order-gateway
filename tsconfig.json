@@ -22,6 +22,7 @@
       "api": ["api/*"],
       "store": ["store/*"],
       "types": ["types/*"],
+      "utils": ["utils/*"],
     }
   },
   "include": ["src/**/*"]

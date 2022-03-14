@@ -16,7 +16,9 @@ const OrderGatewaySendType: React.FC = () => {
   const typeSend = useSelector(selectTypeSend);
 
   const handleSetTypeSend = (_: any, newAlignment: string | null) => {
-    dispatch(setTypeSend(newAlignment));
+    if (newAlignment !== null) {
+      dispatch(setTypeSend(newAlignment));
+    }
   }
 
   return (

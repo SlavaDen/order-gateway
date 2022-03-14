@@ -1,7 +1,6 @@
 import { styled, TextField, TextFieldProps } from "@mui/material";
 import { colors } from "../../enums/colors";
-import { Controller, Control, FieldValues } from "react-hook-form";
-import { MaskField } from 'react-mask-field';
+import { Path, RegisterOptions, UseFormRegister, DeepMap, FieldError } from "react-hook-form";
 
 export const UITransparentTextField = styled(TextField)({
   "& .MuiInputBase-root": {
@@ -29,45 +28,40 @@ export const UITransparentTextField = styled(TextField)({
   "& label.MuiInputLabel-root": {
     color: `${colors.primaryGray800}`,
     fontSize: 20,
-    fontFamily: "SourceSansPro-SemiBold, sant-serif"
+    fontFamily: "SFProDisplay-Medium, sant-serif"
   },
+  ".MuiFormHelperText-root": {
+    fontSize: 16,
+    color: colors.primaryRed400,
+    fontFamily: "SFProDisplay-Medium, sant-serif"
+  }
 });
 
-interface IFormProps {
-  name: string;
-  label: string;
-  control: Control<FieldValues, any>;
-  rules: object;
-  mask: string
-}
+export type FormInputProps<TFormValues> = {
+  name: Path<TFormValues>;
+  rules?: RegisterOptions;
+  register?: UseFormRegister<TFormValues>;
+  errors?: Partial<DeepMap<TFormValues, FieldError>>;
+  mask?: string;
+} & Omit<TextFieldProps, 'name'>;
 
-type TFormTextField = IFormProps & TextFieldProps;
-
-const FormTextField: React.FC<TFormTextField> = ({ name, control, label, rules, ...props }) => {
-
-  function CustomMaskField({ ...otherProps }) {
-    return <MaskField mask={props.mask} replacement="_" {...otherProps} />;
-  }
-
+const FormTextField = <TFormValues extends Record<string, unknown>>({
+  name,
+  register,
+  rules,
+  errors,
+  className,
+  ...props
+}: FormInputProps<TFormValues>): JSX.Element => {
 
   return (
-    <Controller
+    <UITransparentTextField
       name={name}
-      control={control}
-      rules={rules}
-      render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <UITransparentTextField
-          {...props}
-          InputProps={{ inputComponent: CustomMaskField, ...props.InputProps }}
-          helperText={error ? error : null}
-          error={!!error}
-          onChange={onChange}
-          value={value}
-          label={label}
-        />
-      )}
+      {...props}
+      {...(register && register(name, rules))}
     />
   );
 };
+
 
 export { FormTextField };
