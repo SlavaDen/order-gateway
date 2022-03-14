@@ -45,7 +45,6 @@ const OrderGatewaySendForm: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
-  console.log(errors)
   return (
     <form onSubmit={onSubmit} className={s.sendTypeForm}>
       <Grid container spacing={3}>
@@ -53,9 +52,8 @@ const OrderGatewaySendForm: React.FC = () => {
           <FormTextField
             name="value"
             control={control}
-            placeholder="Номер телефона"
+            label="Номер телефона"
             fullWidth
-            size="small"
             rules={{
               required: true,
               minLength: {
@@ -68,7 +66,7 @@ const OrderGatewaySendForm: React.FC = () => {
               },
             }}
             InputProps={{
-              startAdornment: <InputAdornment position="start">{"+7"}</InputAdornment>,
+              startAdornment: <InputAdornment position="start"><Typography sx={{ fontSize: 22 }}> +7</Typography></InputAdornment>,
             }}
             error={errors?.value}
             helperText={errors?.value}

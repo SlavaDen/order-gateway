@@ -19,7 +19,7 @@ const OrderGatewaySendTypeItem: React.FC<IOrderGatewaySendTypeItem> = (props) =>
       <Box>
         {icon}
       </Box>
-      <Typography className={s.sendTypeItem_label} variant="h5">{label}</Typography>
+      <Typography className={s.sendTypeItem_label} variant="h6">{label}</Typography>
     </Stack>
   )
 }

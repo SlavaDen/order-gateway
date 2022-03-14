@@ -1,6 +1,36 @@
-import { TextField, TextFieldProps } from "@mui/material";
+import { styled, TextField, TextFieldProps } from "@mui/material";
+import { colors } from "../../enums/colors";
 import { Controller, Control, FieldValues } from "react-hook-form";
 import { MaskField } from 'react-mask-field';
+
+export const UITransparentTextField = styled(TextField)({
+  "& .MuiInputBase-root": {
+    backgroundColor: colors.primaryGray50,
+    color: colors.primaryGray900,
+    fontSize: 22
+  },
+  "& .MuiInputBase-root.Mui-focused": {
+    backgroundColor: colors.primaryGray50,
+  },
+  ".MuiInputBase-root:hover": {
+    backgroundColor: colors.primaryGray50,
+  },
+  ".MuiFilledInput-root:before": {
+    borderBottom: `2px solid ${colors.primaryGray900}`,
+  },
+  ".MuiFilledInput-root:after": {
+    borderBottom: `2px solid ${colors.primaryBlue400}`,
+    backgroundColor: "transparent",
+  },
+  ".MuiFilledInput-root": { borderBottom: "0" },
+  "& label.Mui-focused": {
+    color: `${colors.primaryGray900}`,
+  },
+  "& label.MuiInputLabel-root": {
+    color: `${colors.primaryGray900}`,
+    fontSize: 20
+  },
+});
 
 interface IFormProps {
   name: string;
@@ -25,7 +55,7 @@ const FormTextField: React.FC<TFormTextField> = ({ name, control, label, rules, 
       control={control}
       rules={rules}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <TextField
+        <UITransparentTextField
           {...props}
           InputProps={{ ...props.InputProps }}
           helperText={error ? error : null}
