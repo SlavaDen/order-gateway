@@ -62,6 +62,7 @@ const OrderGatewaySendForm: React.FC = () => {
                   },
                 }}
                 helperText={errors?.value?.message}
+                type="tel"
                 fullWidth
                 InputProps={{
                   startAdornment: <InputAdornment position="start"><Typography className={s.sendForm_adornment}> +7</Typography></InputAdornment>,
