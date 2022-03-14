@@ -36,7 +36,8 @@ const OrderGatewaySendForm: React.FC = () => {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   function MobileMaskField({ ...otherProps }) {
-    return <MaskField mask="(___) ___-__-__" replacement={{ _: /\d/ }} {...otherProps} />;
+    return <MaskField mask="(___) ___-__-__" replacement={{ _: /\d/ }} showMask
+      separate type="number" {...otherProps} />;
   }
 
   useEffect(() => {
