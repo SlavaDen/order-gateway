@@ -5,7 +5,7 @@ interface IProps {
   label: string
 }
 
-type TBackdrop = IProps | BackdropProps
+type TBackdrop = IProps & BackdropProps
 
 const Backdrop: React.FC<TBackdrop> = ({ ...props }) => {
   return (
@@ -17,7 +17,7 @@ const Backdrop: React.FC<TBackdrop> = ({ ...props }) => {
         <Box textAlign="center">
           <CircularProgress color="inherit" className={s.circularProgress} />
         </Box>
-        <Typography>{props?.label}</Typography>
+        <Typography className={s.backgroud_label}>{props?.label}</Typography>
       </Stack>
     </BackdropMui >
   )

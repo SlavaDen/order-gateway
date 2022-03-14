@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { emailPattern } from "utils/form/patterns";
 import { MaskField } from "react-mask-field";
+import { useNavigate } from "react-router-dom";
 
 type TFormValues = {
   phone: string;
@@ -18,6 +19,7 @@ type TFormValues = {
 
 const OrderGatewaySendForm: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const typeSend = useSelector(selectTypeSend);
 
@@ -35,7 +37,9 @@ const OrderGatewaySendForm: React.FC = () => {
     defaultValues: defaultValues
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    setTimeout(() => navigate("/success-confirm"), 1000);
+  });
 
   function MobileMaskField({ ...otherProps }) {
     return <MaskField mask="(___) ___-__-__" replacement={{ _: /\d/ }} showMask

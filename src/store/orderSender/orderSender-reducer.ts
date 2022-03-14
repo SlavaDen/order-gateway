@@ -6,6 +6,7 @@ const initialState = {
   typeSend: "sms",
   loading: true,
   error: null,
+  isConfirm: false
 };
 
 const orderGatewaySlice = createSlice({

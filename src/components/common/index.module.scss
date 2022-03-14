@@ -23,4 +23,10 @@
 .circularProgress{
   text-align: center !important;
   color: var(#{--primary-gray-900}) !important;
+  height: 52px !important;
+  width: 52px !important;
+}
+
+.backgroud_label{
+  font-size: 1.4rem !important;
 }

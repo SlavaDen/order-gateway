@@ -1,5 +1,5 @@
 import {
-  Grid, Snackbar,
+  Grid,
 } from "@mui/material";
 import Backdrop from "components/common/Backdrop";
 import OrderGatewaySendCheckContainer from "components/orderGateway/OrderGatewaySendCheckContainer";
@@ -32,14 +32,6 @@ const OrderGatewayPage: React.FC = () => {
       {
         loading && <Backdrop open={true} label="Получение данных заказа" />
       }
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        open={true}
-        message="Чек будет отправлен после оплаты заказ на указанный email"
-      />
     </Grid>
 
   )
