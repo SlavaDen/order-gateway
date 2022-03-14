@@ -1,0 +1,28 @@
+.sendCheck_card{
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 1rem !important;
+}
+.sendCheck_title{
+  text-align: center !important;
+  font-family: var(#{--primary-font-bold});
+}
+
+.sendType_container{
+  padding: 1.6rem 0.8rem 1rem 0.8rem !important;
+}
+.sendTypeItem_container{
+  text-align: center !important;
+}
+.sendTypeItem_icon{
+  text-align: center !important;
+  font-size: 2.4rem !important;
+}
+.sendTypeItem_label{
+  text-align: center !important;
+  font-family: var(#{--primary-font-semiBold}) !important;
+}
+
+.sendTypeForm{
+  padding: 0 1.2rem 0 1.2rem !important;
+}

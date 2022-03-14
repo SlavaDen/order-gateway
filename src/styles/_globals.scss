@@ -1,0 +1,32 @@
+
+$primary-blue-400: #4460f1;
+
+
+$primary-black-900: #1b1b1b;
+
+$primary-gray-100: #B4B4B4;
+$primary-gray-600: #3E3D44;
+$primary-gray-700: #35343A;
+$primary-gray-800: #2D2C31;
+$primary-gray-900: #1D1B21;
+
+//fonts
+$primary-font-regular: "SourceSansPro-Regular, sant-serif";
+$primary-font-semiBold: "SourceSansPro-SemiBold, sant-serif";
+$primary-font-bold: "SourceSansPro-Bold, sant-serif";
+
+:root{
+  --primary-blue-400: #{$primary-blue-400};
+
+  --primary-black-900: #{$primary-black-900};
+
+  --primary-gray-100: #{$primary-gray-100};
+  --primary-gray-600: #{$primary-gray-600};
+  --primary-gray-700: #{$primary-gray-700};
+  --primary-gray-800: #{$primary-gray-800};
+  --primary-gray-900: #{$primary-gray-900};
+  
+  --primary-font-regular: #{$primary-font-regular};
+  --primary-font-semiBold: #{$primary-font-semiBold};
+  --primary-font-bold: #{$primary-font-bold};
+}

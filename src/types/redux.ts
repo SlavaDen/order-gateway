@@ -1,0 +1,4 @@
+
+type TState = {
+  orderSender: IOrderSenderDataState;
+};

@@ -1,0 +1,5 @@
+
+
+interface IOrderSenderDataState {
+  typeSend: string,
+};

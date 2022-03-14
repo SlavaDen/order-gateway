@@ -1,0 +1,20 @@
+.button{
+  text-transform: none !important;
+  color: white !important;
+  background-color: var(#{--primary-blue-400}) !important;
+  font-family: var(#{--primary-font-semiBold}) !important;
+}
+
+.toggleButton{
+  border-radius: 1rem !important;
+  margin: 0 0.6rem 0 0.6rem!important;
+  text-align: center !important;
+  text-transform: none !important;
+  color: var(#{--primary-gray-900}) !important;
+  border: 0.01rem solid var(#{--primary-gray-100}) !important;
+}
+
+.toggleButton_selected{
+  background-color: var(#{--primary-gray-900}) !important;
+  color: white !important;
+}
