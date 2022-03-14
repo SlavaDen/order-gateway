@@ -45,7 +45,7 @@ const OrderGatewaySendForm: React.FC = () => {
   }, [typeSend]);
 
   return (
-    <form onSubmit={onSubmit} className={s.sendForm}>
+    <form onSubmit={onSubmit} className={s.sendForm} autoComplete="all">
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
           {
