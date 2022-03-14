@@ -56,6 +56,14 @@ const OrderGatewaySendForm: React.FC = () => {
             type="number"
             name='phone'
           />
+          <TextField
+            fullWidth
+            size='small'
+            label='email'
+            variant='outlined'
+            type="email"
+            name='email'
+          />
           {
             typeSend === "sms" ? (
               <FormTextField<TFormValues>
