@@ -13,6 +13,7 @@ import { MaskField } from "react-mask-field";
 
 type TFormValues = {
   value: string;
+  email: string;
 };
 
 const OrderGatewaySendForm: React.FC = () => {
@@ -21,7 +22,8 @@ const OrderGatewaySendForm: React.FC = () => {
   const typeSend = useSelector(selectTypeSend);
 
   const defaultValues = {
-    value: ""
+    value: "",
+    email: ""
   };
 
   const {
@@ -45,7 +47,7 @@ const OrderGatewaySendForm: React.FC = () => {
   }, [typeSend]);
 
   return (
-    <form onSubmit={onSubmit} className={s.sendForm} autoComplete="all">
+    <form onSubmit={onSubmit} className={s.sendForm}>
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
           {
@@ -71,7 +73,9 @@ const OrderGatewaySendForm: React.FC = () => {
               />
             ) : (
               <FormTextField<TFormValues>
-                name="value"
+                type="email"
+                name="email"
+                autocomplete="email"
                 label="Email"
                 register={register}
                 variant="filled"
