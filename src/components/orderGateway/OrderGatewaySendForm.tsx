@@ -1,5 +1,6 @@
 import {
   Grid, InputAdornment, Typography,
+  TextField
 } from "@mui/material";
 import s from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +36,7 @@ const OrderGatewaySendForm: React.FC = () => {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   function MobileMaskField({ ...otherProps }) {
-    return <MaskField mask="(___)-___-__-__" replacement="_" {...otherProps} />;
+    return <MaskField mask="(___) ___-__-__" replacement={{ _: /\d/ }} {...otherProps} />;
   }
 
   useEffect(() => {
@@ -46,6 +47,14 @@ const OrderGatewaySendForm: React.FC = () => {
     <form onSubmit={onSubmit} className={s.sendForm}>
       <Grid container spacing={3}>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
+          <TextField
+            fullWidth
+            size='small'
+            label='Phone Number'
+            variant='outlined'
+            type="number"
+            name='phone'
+          />
           {
             typeSend === "sms" ? (
               <FormTextField<TFormValues>
