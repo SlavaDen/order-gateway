@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+var config = require("../config/config.json");
 
 module.exports = {
   mode: "development",
@@ -12,8 +13,7 @@ module.exports = {
   plugins: [
     new ReactRefreshWebpackPlugin(),
     new webpack.DefinePlugin({
-      "process.env.name": JSON.stringify("development"),
-      "process.env.apiUrl": JSON.stringify("http://localhost:5001"),
+      "process.env": JSON.stringify(config),
     }),
   ],
 };

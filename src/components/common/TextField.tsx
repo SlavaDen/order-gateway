@@ -43,6 +43,7 @@ export type FormInputProps<TFormValues> = {
   register?: UseFormRegister<TFormValues>;
   errors?: Partial<DeepMap<TFormValues, FieldError>>;
   mask?: string;
+  autocomplete?: string;
 } & Omit<TextFieldProps, 'name'>;
 
 const FormTextField = <TFormValues extends Record<string, unknown>>({

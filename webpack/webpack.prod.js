@@ -1,12 +1,12 @@
 const webpack = require("webpack");
+var config = require("../config/config.json");
 
 module.exports = {
   mode: "production",
   devtool: "source-map",
   plugins: [
     new webpack.DefinePlugin({
-      "process.env.name": JSON.stringify("production"),
-      "process.env.apiUrl": JSON.stringify("http://localhost:5001"),
+      "process.env": JSON.stringify(config),
     }),
   ],
 };

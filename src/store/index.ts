@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
+import * as api from "api/";
 import orderSenderReducer from './orderSender/orderSender-reducer';
 
 const store = configureStore({
@@ -6,7 +7,9 @@ const store = configureStore({
     orderSender: orderSenderReducer
   },
   middleware: (getDefaultMiddleware) =>getDefaultMiddleware({
-   
+    thunk:{
+      extraArgument:api
+    }
   })
 })
 

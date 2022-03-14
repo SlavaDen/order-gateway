@@ -12,7 +12,7 @@ import { emailPattern } from "utils/form/patterns";
 import { MaskField } from "react-mask-field";
 
 type TFormValues = {
-  value: string;
+  phone: string;
   email: string;
 };
 
@@ -22,7 +22,7 @@ const OrderGatewaySendForm: React.FC = () => {
   const typeSend = useSelector(selectTypeSend);
 
   const defaultValues = {
-    value: "",
+    phone: "",
     email: ""
   };
 
@@ -53,7 +53,7 @@ const OrderGatewaySendForm: React.FC = () => {
           {
             typeSend === "sms" ? (
               <FormTextField<TFormValues>
-                name="value"
+                name="phone"
                 label="Номер телефона"
                 register={register}
                 variant="filled"
@@ -63,24 +63,25 @@ const OrderGatewaySendForm: React.FC = () => {
                     message: "Введите номер телефона",
                   },
                 }}
-                helperText={errors?.value?.message}
-                type="tel"
+                helperText={errors?.phone?.message}
                 fullWidth
                 InputProps={{
                   startAdornment: <InputAdornment position="start"><Typography className={s.sendForm_adornment}> +7</Typography></InputAdornment>,
                   inputComponent: MobileMaskField,
                 }}
+                type="tel"
+                autocomplete="tel"
               />
             ) : (
               <FormTextField<TFormValues>
+                label="Email"
                 type="email"
                 name="email"
                 autocomplete="email"
-                label="Email"
                 register={register}
                 variant="filled"
                 rules={{ required: "Введите email", pattern: emailPattern, }}
-                helperText={errors?.value?.message}
+                helperText={errors?.email?.message}
                 fullWidth
               />
             )

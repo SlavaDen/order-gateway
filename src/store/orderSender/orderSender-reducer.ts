@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const name = `orderGateway`;
 
 const initialState = {
-  typeSend: "sms"
+  typeSend: "sms",
+  loading: true,
+  error: null,
 };
 
 const orderGatewaySlice = createSlice({
@@ -12,9 +14,12 @@ const orderGatewaySlice = createSlice({
   reducers: {
     setTypeSend: (state, action) =>{
       state.typeSend = action.payload;
+    },
+    setLoading: (state,action) =>{
+      state.loading = action.payload;
     }
   }
 })
 
 export default orderGatewaySlice.reducer;
-export const {setTypeSend} = orderGatewaySlice.actions;
+export const { setTypeSend, setLoading } = orderGatewaySlice.actions;
