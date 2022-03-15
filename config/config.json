@@ -1,6 +1,6 @@
 {
-  "APIBaseURL":"https://raw.githubusercontent.com/SlavaDen/order-gateway/master/",
-  "APICheckOrderURL":"fake-api.json",
-  "APIConfirmationContactOrderURL":"fake-api.json",
+  "APIBaseURL":"https://order-gateway-fakebackend.vercel.app/",
+  "APICheckOrderURL":"fake",
+  "APIConfirmationContactOrderURL":"fake",
   "requestTimeout":"5000"
 }

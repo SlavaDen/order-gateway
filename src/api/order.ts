@@ -1,7 +1,7 @@
 import {instance} from "./"
 
 const checkOrder = async ({orderGuid})=>{
-  const response = await instance.get(`${process.env.APICheckOrderURL}?orderGuid=${orderGuid}`);
+  const response = await instance.get(`${process.env.APICheckOrderURL}/${orderGuid}`);
   return response;
 }
 
