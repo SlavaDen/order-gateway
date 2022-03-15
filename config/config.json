@@ -1,5 +1,5 @@
 {
-  "APIBaseURL":"http://test/",
+  "APIBaseURL":"https://raw.githubusercontent.com/SlavaDen/order-gateway/master/",
   "APICheckOrderURL":"fake-api.json",
   "APIConfirmationContactOrderURL":"fake-api.json",
   "requestTimeout":"5000"
