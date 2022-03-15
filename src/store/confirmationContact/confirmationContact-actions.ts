@@ -2,8 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const confirmationContactOrder = createAsyncThunk(
   "confirmationContact/confirmationContactOrder",
-  async (payload, {rejectWithValue, dispatch, extra: api}) => {
+  async (payload, {rejectWithValue, extra: api}) => {
     try{
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
       const {   
         typeConfirm,
         value

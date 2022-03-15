@@ -9,7 +9,7 @@ const ConfirmationSuccess: React.FC = () => {
     <Box textAlign="center">
       <CgShoppingBag className={s.confarmitionSuccess_icon} />
       <Typography className={s.confarmitionSuccess_title} variant="h4">Спасибо за заказ</Typography>
-      <Typography variant="h5">Чек будет отправлен на указанные данные, после оплаты</Typography>
+      <Typography variant="h5">Чек будет отправлен, после оплаты</Typography>
     </Box>
   )
 }

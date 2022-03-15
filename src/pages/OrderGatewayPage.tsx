@@ -25,11 +25,9 @@ const OrderGatewayPage: React.FC = () => {
   } = useSelector(selectStatusOrder);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(checkOrder({
-        orderGuid
-      }));
-    }, 1000);
+    dispatch(checkOrder({
+      orderGuid
+    }));
   }, [orderGuid]);
 
   if (errorOrder && loadingOrder === REQUEST_STATUS.fulfilled) {
@@ -40,7 +38,8 @@ const OrderGatewayPage: React.FC = () => {
     navigate("/order/not-found");
   }
 
-  if (loadingOrder !== REQUEST_STATUS.fulfilled) {
+
+  if (loadingOrder === REQUEST_STATUS.pending) {
     return (<Backdrop open={true} label="Получение информации о заказе" />)
   }
 

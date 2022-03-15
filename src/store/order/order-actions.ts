@@ -5,8 +5,9 @@ const checkOrder = createAsyncThunk(
   "order/checkOrder",
   async (payload, {rejectWithValue, dispatch, extra: api}) => {
     try{
-      const {orderGuid} = payload;
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
+      const {orderGuid} = payload;
       const response = await api.checkOrder({orderGuid});
 
       if(!response.data.result){

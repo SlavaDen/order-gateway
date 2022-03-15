@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from "enums/api";
 import { confirmationContactOrder } from "./confirmationContact-actions";
 
-const name = "confirmationContact";
-
 const initialState = {
   typeConfirm: "sms",
   loading: REQUEST_STATUS.fulfilled,
@@ -12,7 +10,7 @@ const initialState = {
 };
 
 const confirmationContactSlice = createSlice({
-  name: `${name}`,
+  name: "confirmationContact",
   initialState: initialState,
   reducers: {
     setTypeConfirm: (state, action) =>{
@@ -22,22 +20,16 @@ const confirmationContactSlice = createSlice({
   extraReducers: (builder) =>{
     builder
     .addCase(confirmationContactOrder.fulfilled, (state) => {
-      state.loading = REQUEST_STATUS.fulfilled;
       state.isConfirm = true;
+      state.loading = REQUEST_STATUS.fulfilled
     })
-    .addMatcher(
-      (action)=>action.type.endsWith(`${name}/pending`),
-      (state)=>{
-        state.loading = REQUEST_STATUS.pending;
-      }
-    )
-    .addMatcher(
-      (action)=>action.type.endsWith(`${name}/rejected`),
-      (state, action)=>{
-        state.loading = REQUEST_STATUS.rejected;
-        state.error = action.payload
-      }
-    )
+    .addCase(confirmationContactOrder.pending, (state) => {
+      state.loading = REQUEST_STATUS.pending;
+    })
+    .addCase(confirmationContactOrder.rejected, (state, action) => {
+      state.loading = REQUEST_STATUS.rejected;
+      state.error = action.payload;
+    })
   }
 })
 

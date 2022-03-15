@@ -43,13 +43,11 @@ const ConfirmationContactForm: React.FC = () => {
   });
 
   const onSubmit = handleSubmit((data) => {
-    setTimeout(() => {
-      if (typeConfirm === "sms") {
-        dispatch(confirmationContactOrder(typeConfirm, data.phone));
-      } else {
-        dispatch(confirmationContactOrder(typeConfirm, data.email));
-      }
-    }, 1000);
+    if (typeConfirm === "sms") {
+      dispatch(confirmationContactOrder(typeConfirm, data.phone));
+    } else {
+      dispatch(confirmationContactOrder(typeConfirm, data.email));
+    }
   });
 
   function MobileMaskField({ ...otherProps }) {
@@ -107,7 +105,7 @@ const ConfirmationContactForm: React.FC = () => {
           }
         </Grid>
         <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
-          <Button fullWidth type="submit" size="large" loading={Boolean(loading === REQUEST_STATUS.fulfilled)}>
+          <Button fullWidth type="submit" size="large" loading={Boolean(loading === REQUEST_STATUS.pending)}>
             Применить
           </Button>
         </Grid>

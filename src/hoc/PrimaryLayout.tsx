@@ -1,7 +1,6 @@
 import {
   Box,
 } from "@mui/material";
-import s from "./index.module.scss";
 
 interface IPrimaryLayout {
   children: React.ReactNode
@@ -9,7 +8,7 @@ interface IPrimaryLayout {
 
 const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   return (
-    <Box className={s.primaryLayout_content}>
+    <Box>
       {children}
     </Box>
   )

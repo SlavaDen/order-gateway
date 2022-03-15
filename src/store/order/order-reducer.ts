@@ -3,8 +3,6 @@ import { REQUEST_STATUS } from "enums/api";
 import { IOrderState } from "types/order";
 import { checkOrder } from 'store/order/order-actions';
 
-const name = "order";
-
 const initialState: IOrderState = {
   loading: "",
   error: null,
@@ -12,7 +10,7 @@ const initialState: IOrderState = {
 };
 
 const orderSlice = createSlice({
-  name: `${name}`,
+  name: "order",
   initialState: initialState,
   reducers: {
     setIsOrder(state, action){
@@ -22,22 +20,16 @@ const orderSlice = createSlice({
   extraReducers: (builder) =>{
     builder
     .addCase(checkOrder.fulfilled, (state) => {
-      state.loading = REQUEST_STATUS.fulfilled;
       state.isOrder = true;
+      state.loading = REQUEST_STATUS.fulfilled;
     })
-    .addMatcher(
-      (action)=>action.type.endsWith(`${name}/pending`),
-      (state)=>{
-        state.loading = REQUEST_STATUS.pending;
-      }
-    )
-    .addMatcher(
-      (action)=>action.type.endsWith(`${name}/rejected`),
-      (state, action)=>{
-        state.loading = REQUEST_STATUS.rejected;
-        state.error = action.payload
-      }
-    )
+    .addCase(checkOrder.pending, (state) => {
+      state.loading = REQUEST_STATUS.pending;
+    })
+    .addCase(checkOrder.rejected, (state, action) => {
+      state.loading = REQUEST_STATUS.rejected;
+      state.error = action.payload;
+    })
   }
 })
 
