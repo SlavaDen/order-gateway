@@ -4,9 +4,12 @@ const selectTypeConfirm = (state: TState)=> state.confirmationContact.typeConfir
 const selectLoading = (state: TState)=> {
   return state.confirmationContact.loading
 };
+const selectError = (state: TState)=> {
+  return state.confirmationContact.error
+};
 const selectIsConfirm = (state: TState)=> {
   return state.confirmationContact.isConfirm
 };
 
 
-export {selectTypeConfirm, selectLoading, selectIsConfirm};
+export {selectTypeConfirm, selectLoading, selectError, selectIsConfirm};

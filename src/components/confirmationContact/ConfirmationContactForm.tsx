@@ -5,7 +5,7 @@ import {
 } from "@mui/material";
 import s from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTypeConfirm, selectLoading, selectIsConfirm } from "store/confirmationContact/confirmationContact-selectors";
+import { selectTypeConfirm, selectLoading, selectIsConfirm, selectError } from "store/confirmationContact/confirmationContact-selectors";
 import { confirmationContactOrder } from "store/confirmationContact/confirmationContact-actions";
 import { Button, FormTextField } from "components/common";
 import { useForm } from "react-hook-form";
@@ -27,6 +27,7 @@ const ConfirmationContactForm: React.FC = () => {
   const typeConfirm = useSelector(selectTypeConfirm);
   const loading = useSelector(selectLoading);
   const isConfirm = useSelector(selectIsConfirm);
+  const error = useSelector(selectError);
 
   const defaultValues = {
     phone: "",
@@ -58,6 +59,10 @@ const ConfirmationContactForm: React.FC = () => {
   useEffect(() => {
     reset()
   }, [typeConfirm]);
+
+  if (error && loading === REQUEST_STATUS.fulfilled) {
+    navigate("/error");
+  }
 
   if (isConfirm) {
     navigate("/confirmation-success");
