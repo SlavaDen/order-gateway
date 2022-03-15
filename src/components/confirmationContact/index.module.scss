@@ -1,32 +1,41 @@
-.sendCheck_card{
+.confirmationContactContainer_card{
   display: flex !important;
   align-items: center !important;
   margin-top: 1rem !important;
 }
-.sendCheck_title{
+.confirmationContactContainer_title{
   text-align: center !important;
   font-family: var(#{--primary-font-medium});
 }
 
-.sendType_container{
+.confirmationContactType_container{
   padding: 1.6rem 0.8rem 1rem 0.8rem !important;
 }
-.sendTypeItem_container{
-  text-align: center !important;
-}
-.sendTypeItem_icon{
+.confirmationContactTypeItem_icon{
   text-align: center !important;
   font-size: 2.2rem !important;
 }
-.sendTypeItem_label{
+
+.confirmationContactTypeItem_container{
+  text-align: center !important;
+}
+.confirmationContactTypeItem_label{
   text-align: center !important;
   font-family: var(#{--primary-font-medium}) !important;
 }
 
-.sendForm{
+.confirmationContact_form{
   padding: 0 1.2rem 0 1.2rem !important;
 }
-.sendForm_adornment{
+.confirmationContact_adornment{
   font-size: 1.3rem !important;
   color: var(#{--primary-gray-500}) !important;
+}
+
+.confarmitionSuccess_icon{
+  font-size: 6rem !important;
+  color: var(#{--primary-green-700}) !important;
+}
+.confarmitionSuccess_title{
+  font-family: var(#{--primary-font-medium});
 }

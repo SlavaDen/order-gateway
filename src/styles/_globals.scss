@@ -1,8 +1,10 @@
 
 $primary-blue-400: #4460F1;
 
+$primary-green-700: #088C61;
 
 $primary-black-900: #1b1b1b;
+
 
 $primary-gray-100: #B4B4B4;
 $primary-gray-500: #57565F;
@@ -11,7 +13,7 @@ $primary-gray-700: #35343A;
 $primary-gray-800: #2D2C31;
 $primary-gray-900: #1D1B21;
 
-$primary-red-400: #FF0000;
+$primary-red-500: #ff4519;
 
 //fonts
 $primary-font-regular: "SFProDisplay-Regular, sant-serif";
@@ -19,6 +21,8 @@ $primary-font-medium: "SFProDisplay-Medium, sant-serif";
 
 :root{
   --primary-blue-400: #{$primary-blue-400};
+
+  --primary-green-700: #{$primary-green-700};
 
   --primary-black-900: #{$primary-black-900};
 
@@ -29,7 +33,7 @@ $primary-font-medium: "SFProDisplay-Medium, sant-serif";
   --primary-gray-800: #{$primary-gray-800};
   --primary-gray-900: #{$primary-gray-900};
 
-  --primary-red-400: #{$primary-red-400};
+  --primary-red-500: #{$primary-red-500};
   
   --primary-font-regular: #{$primary-font-regular};
   --primary-font-medium: #{$primary-font-medium};

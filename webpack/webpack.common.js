@@ -12,6 +12,8 @@ module.exports = {
       store: path.resolve(__dirname, "../src/store/"),
       types: path.resolve(__dirname, "../src/types/"),
       utils: path.resolve(__dirname, "../src/utils/"),
+      enums: path.resolve(__dirname, "../src/enums/"),
+      hoc: path.resolve(__dirname, "../src/hoc/"),
     },
   },
   module: {

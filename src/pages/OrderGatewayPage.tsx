@@ -2,22 +2,47 @@ import {
   Grid,
 } from "@mui/material";
 import Backdrop from "components/common/Backdrop";
-import OrderGatewaySendCheckContainer from "components/orderGateway/OrderGatewaySendCheckContainer";
+import ConfirmationContactContainer from "components/confirmationContact/ConfirmationContactContainer";
+import { REQUEST_STATUS } from "enums/api";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "store/orderSender/orderSender-reducer";
-import { selectOrderStatus } from "store/orderSender/orderSender-selectors";
+import { useNavigate, useParams } from "react-router-dom";
+import { checkOrder } from "store/order/order-actions";
+import { selectStatusOrder } from "store/order/order-selectors";
 import s from "./index.module.scss";
 
 const OrderGatewayPage: React.FC = () => {
-
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const { orderGuid } = useParams();
+
   const {
-    loading,
-    error
-  } = useSelector(selectOrderStatus);
+    loading: loadingOrder,
+    error: errorOrder,
+    isOrder
+  } = useSelector(selectStatusOrder);
 
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(checkOrder({
+        orderGuid
+      }));
+    }, 1000);
+  }, [orderGuid]);
 
-  setTimeout(() => dispatch(setLoading(false)), 1000);
+  if (errorOrder && loadingOrder === REQUEST_STATUS.fulfilled) {
+    navigate("/error");
+  }
+
+  if (!isOrder && loadingOrder === REQUEST_STATUS.rejected) {
+    navigate("/order/not-found");
+  }
+
+  if (loadingOrder !== REQUEST_STATUS.fulfilled) {
+    return (<Backdrop open={true} label="Получение информации о заказе" />)
+  }
 
   return (
     <Grid container>
@@ -26,12 +51,9 @@ const OrderGatewayPage: React.FC = () => {
           className={s.orderGateway_container}
           spacing={0}
         >
-          <OrderGatewaySendCheckContainer />
+          <ConfirmationContactContainer />
         </Grid>
       </Grid>
-      {
-        loading && <Backdrop open={true} label="Получение данных заказа" />
-      }
     </Grid>
 
   )

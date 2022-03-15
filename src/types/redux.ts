@@ -1,6 +1,9 @@
 
-import { IOrderSenderDataState } from './orderSender';
+import { IOrderState } from './order';
+import { IConfirmationContactDataState } from './confirmationContact';
 
 export type TState = {
-  orderSender: IOrderSenderDataState;
+  confirmationContact: IConfirmationContactDataState;
+  order: IOrderState;
 };
+

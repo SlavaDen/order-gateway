@@ -1,11 +1,18 @@
-import { Button as ButtonMui, ButtonProps } from "@mui/material";
+import { LoadingButton, LoadingButtonProps } from "@mui/lab";
 import s from "./index.module.scss";
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Button: React.FC<LoadingButtonProps> = ({ children, ...props }) => {
   return (
-    <ButtonMui classes={{ root: s.button }} {...props}>
+    <LoadingButton
+      classes={{
+        root: s.button,
+        loading: s.button_loading,
+        loadingIndicator: s.button_loadingIndicator,
+      }}
+      {...props}
+    >
       {children}
-    </ButtonMui>
+    </LoadingButton>
   )
 }
 

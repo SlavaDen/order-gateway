@@ -1,4 +1,6 @@
 {
-  "apiBaseURL":"12",
+  "APIBaseURL":"http://test/",
+  "APICheckOrderURL":"fake-api.json",
+  "APIConfirmationContactOrderURL":"fake-api.json",
   "requestTimeout":"5000"
 }

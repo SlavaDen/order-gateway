@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import * as api from "api/";
-import orderSenderReducer from './orderSender/orderSender-reducer';
+import confirmationContactReducer from './confirmationContact/confirmationContact-reducer';
+import orderReducer from './order/order-reducer';
 
 const store = configureStore({
   reducer:{
-    orderSender: orderSenderReducer
+    confirmationContact: confirmationContactReducer,
+    order: orderReducer
   },
   middleware: (getDefaultMiddleware) =>getDefaultMiddleware({
     thunk:{

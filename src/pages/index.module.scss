@@ -6,6 +6,18 @@
   align-items: center !important;
 }
 
-.page_container{
-  margin-top: 20px;
+.orderNotFound_container{
+  min-width: 100% !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.confirmationSuccess_container{
+  min-width: 100% !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }

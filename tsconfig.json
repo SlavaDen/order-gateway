@@ -23,6 +23,8 @@
       "store": ["store/*"],
       "types": ["types/*"],
       "utils": ["utils/*"],
+      "enums": ["enums/*"],
+      "hoc": ["hoc/*"],
     }
   },
   "include": ["src/**/*"]

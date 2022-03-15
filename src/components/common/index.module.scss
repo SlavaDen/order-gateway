@@ -5,6 +5,16 @@
   font-family: var(#{--primary-font-medium}) !important;
 }
 
+.button_loading{
+  background-color: var(#{--primary-blue-400}) !important;
+  color: transparent !important;
+}
+
+.button_loadingIndicator{
+  color: white !important;
+  font-size: 2rem !important;
+}
+
 .toggleButton{
   border-radius: 1rem !important;
   margin: 0 0.6rem 0 0.6rem!important;
@@ -29,4 +39,5 @@
 
 .backgroud_label{
   font-size: 1.4rem !important;
+  
 }
