@@ -24,11 +24,6 @@ TOrderAttributes,
       
       const response = await api.checkOrder(orderGuid);
 
-      if(!response.data.result){
-        dispatch(setIsOrder(false));
-        return rejectWithValue({message:"Order not found"} as TApiError);
-      }
-
       return response.data;
     } catch(error) {
       return rejectWithValue((await error) as TApiError)

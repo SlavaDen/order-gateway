@@ -24,10 +24,7 @@ TConfirmationContactAttributes,
         value
       } = payload;
 
-      const response = await api.confirmationContactOrder({   
-        orderGuid,
-          value
-      });
+      const response = await api.confirmationContactOrder(orderGuid, value);
 
       return response.data;
     } catch(error) {

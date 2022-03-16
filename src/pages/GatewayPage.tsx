@@ -35,11 +35,6 @@ const GatewayPage: React.FC = () => {
     navigate("/error");
   }
 
-  if (!isOrder && loadingOrder === REQUEST_STATUS.rejected) {
-    navigate("/order/not-found");
-  }
-
-
   if (loadingOrder === REQUEST_STATUS.pending) {
     return (<Backdrop open={true} label="Получение информации о заказе" />)
   }
