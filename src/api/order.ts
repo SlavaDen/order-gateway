@@ -6,8 +6,10 @@ const checkOrder = async (orderGuid: string)=>{
 }
 
 const confirmationContactOrder = async (orderGuid: string, value: string)=>{
-  const response = await instance.post(`${process.env.APIConfirmationContactOrderURL}/${orderGuid}`, {
-    value: btoa(value)
+  const response = await instance.post(`${process.env.APIConfirmationContactOrderURL}/${orderGuid}`, btoa(value), {
+    headers: {
+        'Content-Type': 'text',
+    }
   });
   return response;
 }
