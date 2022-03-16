@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from "enums/api";
 import { IOrderState } from "types/order";
 import { checkOrder } from 'store/order/order-actions';
@@ -17,7 +17,7 @@ const orderSlice = createSlice({
       state.isOrder = action.payload
     }
   }, 
-  extraReducers: (builder) =>{
+  extraReducers: (builder: ActionReducerMapBuilder<IOrderState>) =>{
     builder
     .addCase(checkOrder.fulfilled, (state) => {
       state.isOrder = true;
@@ -28,7 +28,11 @@ const orderSlice = createSlice({
     })
     .addCase(checkOrder.rejected, (state, action) => {
       state.loading = REQUEST_STATUS.rejected;
-      state.error = action.payload;
+      if (action.payload) {
+        state.error = action.payload.message
+      } else {
+        state.error = "Unknown error"
+      }
     })
   }
 })

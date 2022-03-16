@@ -12,8 +12,9 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { emailPattern } from "utils/form/patterns";
 import { MaskField } from "react-mask-field";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { REQUEST_STATUS } from "enums/api";
+import { TOrderAttributes } from "types/order";
 
 type TFormValues = {
   phone: string;
@@ -28,6 +29,8 @@ const ConfirmationContactForm: React.FC = () => {
   const loading = useSelector(selectLoading);
   const isConfirm = useSelector(selectIsConfirm);
   const error = useSelector(selectError);
+
+  const { orderGuid } = useParams<TOrderAttributes>();
 
   const defaultValues = {
     phone: "",
@@ -45,15 +48,26 @@ const ConfirmationContactForm: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     if (typeConfirm === "sms") {
-      dispatch(confirmationContactOrder(typeConfirm, data.phone));
+      dispatch(confirmationContactOrder({
+        orderGuid: orderGuid || "",
+        value: data.phone
+      }));
     } else {
-      dispatch(confirmationContactOrder(typeConfirm, data.email));
+      dispatch(confirmationContactOrder({
+        orderGuid: orderGuid || "",
+        value: data.email
+      }));
     }
   });
 
   function MobileMaskField({ ...otherProps }) {
-    return <MaskField mask="(___) ___-__-__" replacement={{ _: /\d/ }} showMask
-      separate type="number" {...otherProps} />;
+    return (
+      <MaskField mask="(9__) ___-__-__" replacement={{ _: /\d/ }}
+        separate
+        type="number"
+        {...otherProps}
+      />
+    );
   }
 
   useEffect(() => {
@@ -76,13 +90,12 @@ const ConfirmationContactForm: React.FC = () => {
             typeConfirm === "sms" ? (
               <FormTextField<TFormValues>
                 name="phone"
-                label="Номер телефона"
+                placeholder="Введите номер телефона"
                 register={register}
-                variant="filled"
                 rules={{
-                  required: "Введите номер телефона", minLength: {
+                  required: "Введите корректный номер телефона", minLength: {
                     value: 15,
-                    message: "Введите номер телефона",
+                    message: "Введите корректный номер телефона",
                   },
                 }}
                 helperText={errors?.phone?.message}
@@ -96,12 +109,11 @@ const ConfirmationContactForm: React.FC = () => {
               />
             ) : (
               <FormTextField<TFormValues>
-                label="Email"
+                placeholder="Введите email"
                 type="email"
                 name="email"
                 autocomplete="email"
                 register={register}
-                variant="filled"
                 rules={{ required: "Введите email", pattern: emailPattern, }}
                 helperText={errors?.email?.message}
                 fullWidth

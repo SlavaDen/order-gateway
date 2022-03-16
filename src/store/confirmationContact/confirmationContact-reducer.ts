@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from "enums/api";
+import { IConfirmationContactDataState } from "types/confirmationContact";
 import { confirmationContactOrder } from "./confirmationContact-actions";
 
-const initialState = {
+const initialState: IConfirmationContactDataState = {
   typeConfirm: "sms",
   loading: REQUEST_STATUS.fulfilled,
   error: null,
@@ -28,7 +29,11 @@ const confirmationContactSlice = createSlice({
     })
     .addCase(confirmationContactOrder.rejected, (state, action) => {
       state.loading = REQUEST_STATUS.rejected;
-      state.error = action.payload;
+      if (action.payload) {
+        state.error = action.payload.message
+      } else {
+        state.error = "Unknown error"
+      }
     })
   }
 })

@@ -15,11 +15,13 @@ const ConfirmationContactTypeItem: React.FC<IOrderGatewaySendTypeItem> = (props)
   const { icon, label } = props;
 
   return (
-    <Stack className={s.confirmationContactTypeItem_container}>
+    <Stack>
       <Box>
         {icon}
       </Box>
-      <Typography className={s.confirmationContactTypeItem_label} variant="h6">{label}</Typography>
+      <Typography className={s.confirmationContactTypeItem_label} variant="h6">
+        {label}
+      </Typography>
     </Stack>
   )
 }

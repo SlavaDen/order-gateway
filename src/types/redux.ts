@@ -6,4 +6,3 @@ export type TState = {
   confirmationContact: IConfirmationContactDataState;
   order: IOrderState;
 };
-

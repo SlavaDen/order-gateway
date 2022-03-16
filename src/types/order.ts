@@ -6,6 +6,6 @@ export interface IOrderState {
   isOrder: boolean
 };
 
-export interface IOrderGuid {
-  orderGuid: string,
-}
+export type TOrderAttributes = {
+  orderGuid: string;
+};

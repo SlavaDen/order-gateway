@@ -10,13 +10,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { checkOrder } from "store/order/order-actions";
 import { selectStatusOrder } from "store/order/order-selectors";
 import s from "./index.module.scss";
+import { TOrderAttributes } from 'types/order';
 
-const OrderGatewayPage: React.FC = () => {
+const GatewayPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const { orderGuid } = useParams();
+  const { orderGuid } = useParams<TOrderAttributes>();
 
   const {
     loading: loadingOrder,
@@ -26,7 +27,7 @@ const OrderGatewayPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(checkOrder({
-      orderGuid
+      orderGuid: orderGuid || ""
     }));
   }, [orderGuid]);
 
@@ -54,8 +55,7 @@ const OrderGatewayPage: React.FC = () => {
         </Grid>
       </Grid>
     </Grid>
-
   )
 }
 
-export default OrderGatewayPage;
+export default GatewayPage;

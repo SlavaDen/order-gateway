@@ -6,22 +6,16 @@ export const UITransparentTextField = styled(TextField)({
   "& .MuiInputBase-root": {
     backgroundColor: colors.primaryGray50,
     color: colors.primaryGray900,
+    borderRadius: 15,
+    borderTopLeftRadius: 15,
     fontSize: 22
+  },
+  "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: `${colors.primaryBlue400}`,
   },
   "& .MuiInputBase-root.Mui-focused": {
     backgroundColor: colors.primaryGray50,
   },
-  ".MuiInputBase-root:hover": {
-    backgroundColor: colors.primaryGray50,
-  },
-  ".MuiFilledInput-root:before": {
-    borderBottom: `2px solid ${colors.primaryGray800}`,
-  },
-  ".MuiFilledInput-root:after": {
-    borderBottom: `2px solid ${colors.primaryGray800}`,
-    backgroundColor: "transparent",
-  },
-  ".MuiFilledInput-root": { borderBottom: "0" },
   "& label.Mui-focused": {
     color: `${colors.primaryGray800}`,
   },

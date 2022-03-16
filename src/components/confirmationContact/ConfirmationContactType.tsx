@@ -1,6 +1,6 @@
 import {
   ToggleButtonGroup,
-  Box,
+  Box
 } from "@mui/material";
 import { MdEmail, MdPhoneIphone } from "react-icons/md";
 import s from "./index.module.scss";
@@ -24,6 +24,7 @@ const ConfirmationContactType: React.FC = () => {
   return (
     <Box className={s.confirmationContactType_container}>
       <ToggleButtonGroup
+        className={s.confirmationContactType_toggleButtons}
         exclusive
         value={typeConfirm}
         onChange={handleSetTypeConfirm}
