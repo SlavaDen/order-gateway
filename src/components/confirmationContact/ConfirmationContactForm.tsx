@@ -62,7 +62,9 @@ const ConfirmationContactForm: React.FC = () => {
 
   function MobileMaskField({ ...otherProps }) {
     return (
-      <MaskField mask="(9__) ___-__-__" replacement={{ _: /\d/ }}
+      <MaskField
+        mask="(___) ___-__-__"
+        replacement={{ _: /\d/ }}
         separate
         type="number"
         {...otherProps}
@@ -93,7 +95,8 @@ const ConfirmationContactForm: React.FC = () => {
                 placeholder="Введите номер телефона"
                 register={register}
                 rules={{
-                  required: "Введите корректный номер телефона", minLength: {
+                  required: "Введите корректный номер телефона",
+                  minLength: {
                     value: 15,
                     message: "Введите корректный номер телефона",
                   },

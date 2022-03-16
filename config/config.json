@@ -2,5 +2,5 @@
   "APIBaseURL":"https://order-gateway-fakebackend.vercel.app/",
   "APICheckOrderURL":"fake",
   "APIConfirmationContactOrderURL":"fake",
-  "requestTimeout":"5000"
+  "APIrequestTimeout":"5000"
 }

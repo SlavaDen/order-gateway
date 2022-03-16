@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { checkOrder } from "store/order/order-actions";
 import { selectStatusOrder } from "store/order/order-selectors";
-import s from "./index.module.scss";
 import { TOrderAttributes } from 'types/order';
+import s from "./index.module.scss";
 
 const GatewayPage: React.FC = () => {
   const dispatch = useDispatch();
