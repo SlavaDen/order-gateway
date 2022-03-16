@@ -31,9 +31,10 @@ const GatewayPage: React.FC = () => {
     }));
   }, [orderGuid]);
 
-  if (errorOrder && loadingOrder === REQUEST_STATUS.fulfilled) {
-    navigate("/error");
+  if (!isOrder && loadingOrder === REQUEST_STATUS.rejected) {
+    navigate("/order/not-found");
   }
+
 
   if (loadingOrder === REQUEST_STATUS.pending) {
     return (<Backdrop open={true} label="Получение информации о заказе" />)

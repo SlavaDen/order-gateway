@@ -76,7 +76,7 @@ const ConfirmationContactForm: React.FC = () => {
     reset()
   }, [typeConfirm]);
 
-  if (error && loading === REQUEST_STATUS.fulfilled) {
+  if (error && loading === REQUEST_STATUS.rejected) {
     navigate("/error");
   }
 
