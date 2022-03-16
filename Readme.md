@@ -52,23 +52,3 @@
    В ней будет готовый build проекта, папку можно переименовать
 6. Переносим папку с готовым билдом на виртуальный сервер (Если это нужно) и публикуем проект
 7. Для корректной работы интерфейса нужно перенаправлять все запросы на / или /index.html
-
-Пример web.config для ISS:
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-  <system.webServer>
-  <rewrite>
-    <rules>
-      <rule name="ReactRouter Routes" stopProcessing="true">
-        <match url=".*" />
-        <conditions logicalGrouping="MatchAll">
-          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
-          <add input="{REQUEST_URI}" pattern="^/(docs)" negate="true" />
-        </conditions>
-        <action type="Rewrite" url="index.html" />
-      </rule>
-    </rules>
-  </rewrite>
-</system.webServer>
-</configuration>
